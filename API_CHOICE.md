@@ -1,6 +1,6 @@
 - Étudiant : Delon VESSAH RAMIHOU
 - API choisie : Agify
-- URL base : https://api.agify.io/michael
+- URL base : https://api.agify.io/?name=michael
 - Documentation officielle / README : https://agify.io/
 - Auth : None
 - Endpoints testés :
