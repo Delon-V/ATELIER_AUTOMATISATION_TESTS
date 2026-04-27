@@ -4,7 +4,7 @@ import time
 
 app = Flask(__name__)
 
-API_URL = "https://api.quotable.io/random"
+API_URL = "https://api.agify.io/?name=michael"
 
 def test_api():
     start = time.time()
@@ -12,10 +12,13 @@ def test_api():
         r = requests.get(API_URL, timeout=5)
         latency = time.time() - start
 
+        data = r.json()
+
         return {
             "status_code": r.status_code,
             "latency": round(latency, 3),
-            "success": r.status_code == 200
+            "success": r.status_code == 200,
+            "api_response": data
         }
 
     except Exception as e:
