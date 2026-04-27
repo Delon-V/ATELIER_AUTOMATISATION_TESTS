@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Monitoring</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #121212;
+            color: white;
+            text-align: center;
+        }
+        .card {
+            background: #1e1e1e;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        .ok { color: #00ff88; }
+        .fail { color: #ff4444; }
+    </style>
+</head>
+<body>
+
+<h1>API Monitoring Dashboard</h1>
+
+<h2>Uptime : {{ uptime }}%</h2>
+
+{% for api in results %}
+<div class="card">
+    <h3>{{ api.name }}</h3>
+    <p>Status : {{ api.status }}</p>
+    <p>Latence : {{ api.latency }}s</p>
+    <p class="{{ 'ok' if api.success else 'fail' }}">
+        {{ 'OK' if api.success else 'FAIL' }}
+    </p>
+</div>
+{% endfor %}
+
+<h2> Historique (10 derniers)</h2>
+
+{% for h in history %}
+<p>{{ h.name }} - {{ h.status }} - {{ h.latency }}s</p>
+{% endfor %}
+
+</body>
+</html>
